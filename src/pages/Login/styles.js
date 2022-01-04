@@ -12,16 +12,20 @@ export const Body = styled.div`
 
 export const Left = styled.div`
   background: #FFF;
-  width: 40%;
+  width: 45%;
   height: 100vh;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media(max-width: 800px) {
+    width: 100%;
+  }
 `;
 
 export const BoxLogin = styled.div`
-  width: 50%;
+  width: 80%;
 `;
 
 export const LoginButton = styled(Button)`
@@ -30,6 +34,10 @@ export const LoginButton = styled(Button)`
 
 export const Right = styled.div`
   background: #480355;
-  width: 60%;
-  height: 100vh;
+  width: 55%;
+  height: 100vh; 
+
+  @media(max-width: 800px) {
+    display: none; 
+  }
 `;

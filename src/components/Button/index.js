@@ -4,7 +4,7 @@ import * as S from "./styles";
 
 const Button = ({
   onClick,
-  bgColor = "#7699D4",
+  bgColor = "#9448BC",
   children = "Children",
   disable,
   width = "100%",
