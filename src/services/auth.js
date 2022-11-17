@@ -1,18 +1,20 @@
-import axios from "axios";
-import Settings from "../Settings";
+import { getService, postService } from "./api";
 
-export const authenticate = async (email, password) => {
-  try {
-    const body = {
-      email: email,
-      password: password,
-    };
-    const response = await axios.post(
-      `${process.env.REACT_APP_BASE_URL}/${Settings.ROUTES.AUTH}`,
-      body
-    );
-    return response?.data;
-  } catch (err) {
-    return err?.response?.data;
+export const authenticateUser = async (email, password) => {
+  const response = await postService("auth", {
+    email: email,
+    password: password,
+  });
+
+  if (!response?.token) {
+    return;
   }
+
+  localStorage.setItem("token", response?.token);
+  return response;
+};
+
+export const isAuthenticated = async () => {
+  const response = await getService("user");
+  return response?.detail ? false : true;
 };

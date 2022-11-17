@@ -1,91 +1,42 @@
-import { useState } from "react";
+import React from "react";
+
+import { Input, Notification } from "../../components";
+
+import { useLogin } from "./useLogin";
 
 import * as S from "./styles";
 
-import { Input } from "../../components/Input";
-import { Notification } from "../../components/notification";
-
-import { authenticate } from "../../services/auth";
-
 const Login = () => {
-
-  const [configLogin, setConfigLogin] = useState({
-    email: {
-      label: "Email",
-      placeHolder: "Digite seu email...",
-    },
-    password: {
-      label: "Senha",
-      placeHolder: "Digite sua senha...",
-    },
-    button: {
-      children: "Entrar"
-    },
-    error: {
-      message: "Error message",
-      show: false,
-    }
-  });
-
-  const [login, setLogin] = useState({
-    email: "",
-    password: "",
-  });
-
-  const [loading, setLoading] = useState(false);
-
-  const onClick = async () => {
-
-    setLoading(true);
-
-    const response = await authenticate(login.email, login.password);
-
-    setLoading(false);
-
-    if(!response?.token) {
-
-      setConfigLogin({ ...configLogin, error: { message: response?.detail, show: true }})
-      setTimeout(() => {
-        setConfigLogin({ ...configLogin, error: { show: false }})
-      }, 5000);
-      return;
-    }
-
-    setConfigLogin({ ...configLogin, error: { message: "logged with success!", show: true }})
-
-    setTimeout(() => {
-      setConfigLogin({ ...configLogin, error: { show: false }})
-    }, 5000);
-    return;
-  }
+  const { loading, configLogin, onClick, login, setLogin } = useLogin();
 
   return (
     <S.Body>
-      <Notification show={configLogin.error.show} children={configLogin.error.message}/>
-      <S.Left>
+      <Notification show={configLogin.error.show}>
+        {configLogin.error.message}
+      </Notification>
+      <S.Left></S.Left>
+      <S.Right>
         <S.BoxLogin>
-          <Input 
+          <Input
             value={login.email}
             onChange={(e) => setLogin({ ...login, email: e.target.value })}
-            label={configLogin.email.label} 
+            label={configLogin.email.label}
             placeholder={configLogin.email.placeHolder}
           />
-          <Input 
+          <Input
             value={login.password}
             onChange={(e) => setLogin({ ...login, password: e.target.value })}
-            label={configLogin.password.label} 
+            label={configLogin.password.label}
             placeholder={configLogin.password.placeHolder}
+            type="password"
           />
-          <S.LoginButton loading={loading}
-            children={configLogin.button.children} 
-            onClick={onClick}
-          />
+          <S.LoginButton loading={loading} onClick={onClick}>
+            {configLogin.button.children}
+          </S.LoginButton>
         </S.BoxLogin>
-      </S.Left>
-      <S.Right>
       </S.Right>
     </S.Body>
   );
-}
+};
 
 export { Login };

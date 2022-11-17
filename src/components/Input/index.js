@@ -1,3 +1,5 @@
+import React from "react";
+
 import * as S from "./styles";
 
 const Input = ({
@@ -11,22 +13,20 @@ const Input = ({
   bgColor = "#9448BC",
   labelColor = "#480355",
   ...rest
-}) => {
-  return (
-    <S.InputContainer {...rest}> 
-      <S.InputLabel htmlFor={id}>{label}</S.InputLabel>
-      <S.InputElement
-        id={id}
-        type={type}
-        value={value}
-        onChange={onChange}
-        width={width}
-        bgColor={bgColor}
-        labelColor={labelColor}
-        placeholder={placeholder}
-      />
-    </S.InputContainer>
-  )
-}
+}) => (
+  <S.InputContainer {...rest}>
+    <S.InputLabel htmlFor={id}>{label}</S.InputLabel>
+    <S.InputElement
+      id={id}
+      type={type}
+      value={value}
+      onChange={onChange}
+      width={width}
+      bgColor={bgColor}
+      labelColor={labelColor}
+      placeholder={placeholder}
+    />
+  </S.InputContainer>
+);
 
 export { Input };

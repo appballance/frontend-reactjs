@@ -2,11 +2,17 @@ import styled from "styled-components";
 import { Button } from "../../components/Button";
 
 export const HomeContainer = styled.div`
-  margin: 0 50px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 100px 300px 0 300px;
+
+  @media (max-width: ${({ theme: { media }}) => media.tablet_landscape}) {
+    margin: 100px 200px 0 200px;
+  }
+  @media (max-width: ${({ theme: { media }}) => media.tablet_portrait}) {
+    margin: 0 50px;
+  }
 `;
 
 export const HomeTitle = styled.p`

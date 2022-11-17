@@ -11,16 +11,12 @@ export const Body = styled.div`
 `;
 
 export const Left = styled.div`
-  background: #FFF;
-  width: 45%;
-  height: 100vh;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: #480355;
+  width: 55%;
+  height: 100vh; 
 
   @media(max-width: 800px) {
-    width: 100%;
+    display: none; 
   }
 `;
 
@@ -33,11 +29,17 @@ export const LoginButton = styled(Button)`
 `;
 
 export const Right = styled.div`
-  background: #480355;
-  width: 55%;
-  height: 100vh; 
+
+background: #FFF;
+  width: 45%;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   @media(max-width: 800px) {
-    display: none; 
+    width: 100%;
   }
+
 `;
