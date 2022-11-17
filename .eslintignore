@@ -1,0 +1,17 @@
+scripts
+node_modules/*
+home
+public
+dist
+build
+plop-scripts
+plopfile.js
+
+*.svg
+*.ico
+*.md
+*.log
+*.lock
+*.test.js
+*.html
+.gitignore
