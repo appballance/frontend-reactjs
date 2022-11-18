@@ -7,7 +7,7 @@ export const authenticateUser = async (email, password) => {
   });
 
   if (!response?.token) {
-    return;
+    return response;
   }
 
   localStorage.setItem("token", response?.token);
