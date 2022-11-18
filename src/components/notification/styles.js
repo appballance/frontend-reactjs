@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 export const NotificationContainer = styled.div`
-  background-color: #480c55;
+  background-color: ${({ type }) => type === "Success" ? "#08A045" : "#A22C29"};
   width: 300px;
-  height: 80px;
+  height: 60px;
   border-radius: 5px;
   top: 10px;
   left: 10px;
   position: absolute;
-  border-top: 5px solid #9448BC;
+  border-top: 3px solid #FFF;
 `;
 
 export const NotificationText = styled.h3`
