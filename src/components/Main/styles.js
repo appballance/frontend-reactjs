@@ -12,26 +12,42 @@ export const MainContent = styled.div`
 
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 `;
 
 export const Logo = styled.img`
   width: 35px;
   height: 35px;
   padding-top: 15px;
-  display: ${({ state }) => (state ? "none" : "flex")};
+  padding-left: 15px;
 `;
 
 export const List = styled.ul`
+  width: 100%;
   display: flex;
   flex-direction: column;
   list-style: none;
   gap: 10px;
-  padding-top: 20px;
+  padding-top: 40px;
+  /* padding-left: 15px; */
 `;
 
 export const ListELement = styled.li`
-  color: ${({ theme: { colors } }) => colors.white_1};
-  cursor: pointer;
   display: ${({ state }) => (state ? "flex" : "none")};
+  width: 100%;
+  color: ${({ theme: { colors } }) => colors.white_1};
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  a {
+    padding-left: 15px;
+    display: ${({ state }) => (state ? "flex" : "none")};
+  }
+
+  :hover {
+    background-color: ${({ theme: { colors }, state }) =>
+      state ? colors.purple_2 : colors.purple_1};
+  }
 `;
