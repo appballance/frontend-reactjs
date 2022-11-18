@@ -31,3 +31,21 @@ export const Button = styled(ButtonComponent)`
   flex-direction: column;
   margin-top: 20px;
 `;
+
+export const AlertCodeSended = styled.div`
+  border-radius: 5px;
+  width: calc(100% - 2px);
+  height: fit-content;
+  color: #37323E;
+  font-weight: bolder;
+`;
+
+export const AlertContent = styled.p`
+  background: rgba(236, 212, 68, 0.8);
+  border: 2px solid rgb(236, 212, 68);
+  padding: 10px;
+  margin-top: 5px;
+
+  color: #37323E;
+  font-weight: normal;
+`;
