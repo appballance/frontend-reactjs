@@ -1,0 +1,5 @@
+export const APP_ACTIONS = {
+  SET_PATH: "SET_PATH",
+  SET_MESSAGE: "SET_MESSAGE",
+  SET_IS_LOADING: "SET_LOADING",
+};
