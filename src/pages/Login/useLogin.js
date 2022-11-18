@@ -14,7 +14,7 @@ export const useLogin = () => {
   const history = useHistory();
 
   const onClick = async () => {
-    console.log("env1", process.env);
+    console.log("ENV", process.env);
 
     setLoading(true);
     const response = await authenticateUser(login.email, login.password);
