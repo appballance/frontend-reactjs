@@ -4,6 +4,7 @@ import * as S from "./styles";
 
 const Input = ({
   id,
+  name,
   type = "text",
   onChange,
   placeholder = "Digite aqui...",
@@ -18,6 +19,7 @@ const Input = ({
     <S.InputLabel htmlFor={id}>{label}</S.InputLabel>
     <S.InputElement
       id={id}
+      name={name}
       type={type}
       value={value}
       onChange={onChange}

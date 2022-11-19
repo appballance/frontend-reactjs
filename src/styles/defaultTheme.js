@@ -33,6 +33,7 @@ const theme = {
     purple_2: "#5D036F",
     white_1: "#FFFFFF",
     black_1: "#000000",
+    gray_1: "#A9A4AC",
   }
 };
 

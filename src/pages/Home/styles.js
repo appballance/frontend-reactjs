@@ -53,6 +53,7 @@ export const HomeRedirectRegister = styled.p`
   font-size: 16px;
   line-height: 21px; 
   color: #9448BC;
+  cursor: pointer;
 
   margin: 10px 0;
 `;

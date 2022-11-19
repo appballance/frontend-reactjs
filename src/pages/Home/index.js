@@ -16,7 +16,7 @@ const Home = () => {
       </S.HomeMessage>
       <S.HomeButton children="Acessar" onClick={() => history.push("/login")} />
       <S.HomeQuestion>Não tem uma conta ainda?</S.HomeQuestion>
-      <S.HomeRedirectRegister onClick={() => history.push("/login")}>
+      <S.HomeRedirectRegister onClick={() => history.push("/register")}>
         Cadastrar
       </S.HomeRedirectRegister>
     </S.HomeContainer>

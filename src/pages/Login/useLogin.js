@@ -14,8 +14,6 @@ export const useLogin = () => {
   const history = useHistory();
 
   const onClick = async () => {
-    console.log("ENV", process.env);
-
     setLoading(true);
     const response = await authenticateUser(login.email, login.password);
     setLoading(false);
@@ -26,7 +24,7 @@ export const useLogin = () => {
     }
 
     showToastMessage("Login realizado com sucesso");
-    history.push("/");
+    history.push("/home");
     return;
   };
 

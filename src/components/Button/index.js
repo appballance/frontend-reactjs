@@ -9,9 +9,10 @@ const Button = ({
   disable,
   width = "100%",
   loading,
-  type = "bubbles",
+  typeLoading = "bubbles",
   color = "#9448BC",
-  ...rest
+  type,
+  ...restProps
 }) => {
   const textButton = loading ? "" : children;
   return (
@@ -21,11 +22,12 @@ const Button = ({
       disabled={disable}
       width={width}
       loading={`${loading}`}
-      {...rest}
+      type={type}
+      {...restProps}
     >
       {textButton}
       <S.ButtonLoading
-        type={type}
+        type={typeLoading}
         color={color}
         loading={`${loading}`}
         height={40}
