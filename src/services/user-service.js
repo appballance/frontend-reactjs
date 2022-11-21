@@ -16,3 +16,8 @@ export const isAuthenticated = async () => {
   const response = await getService("user");
   return response?.detail ? false : true;
 };
+
+export const logoutUser = async () => {
+  localStorage.removeItem("token");
+  return;
+};

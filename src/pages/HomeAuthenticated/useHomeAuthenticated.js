@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { useApp } from "../../application/context";
-import { getUser } from "../../services/user-service";
+import { getUser, logoutUser } from "../../services/user-service";
 import { authNubank, sendCodeByEmailNubank } from "../../services/bank-service";
 
 export const useHomeAuthenticated = () => {
@@ -26,7 +26,7 @@ export const useHomeAuthenticated = () => {
       .then(setUser)
       .catch((error) => {
         console.log(error);
-        history.push("login");
+        history.push("/login");
       });
   }, []);
 
@@ -40,6 +40,14 @@ export const useHomeAuthenticated = () => {
       onClick: (e) => {
         e.stopPropagation();
         setStateModal(!stateModal);
+      },
+    },
+    {
+      name: "Desconectar-se",
+      onClick: (e) => {
+        e.stopPropagation();
+        logoutUser();
+        history.push("/login");
       },
     },
   ];
