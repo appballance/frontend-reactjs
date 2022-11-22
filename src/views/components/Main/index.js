@@ -21,18 +21,12 @@ const Main = ({
     <S.Logo state={state} />
     <S.List>
       {listContent.length &&
-        listContent.map(
-          (element, index) =>
-            state && (
-              <S.ListELement
-                key={index}
-                state={state}
-                onClick={element.onClick}
-              >
-                <a>{element.name}</a>
-              </S.ListELement>
-            )
-        )}
+        listContent.map((element, index) => (
+          <S.ListELement key={index} state={state} onClick={element?.onClick}>
+            {state && <a>{element?.name}</a>}
+            {!state && <S.Icon src={element?.icon} />}
+          </S.ListELement>
+        ))}
     </S.List>
   </S.MainContent>
 );

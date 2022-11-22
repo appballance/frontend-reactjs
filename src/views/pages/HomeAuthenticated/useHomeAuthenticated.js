@@ -3,26 +3,38 @@ import { useHistory } from "react-router-dom";
 
 import { useApp } from "application/context";
 import { getUser, logoutUser } from "infrastructure/services/user-service";
-import { authNubank, sendCodeByEmailNubank } from "infrastructure/services/bank-service";
+import {
+  authNubank,
+  sendCodeByEmailNubank,
+} from "infrastructure/services/bank-service";
+
+import bankConectIcon from "views/assets/icons/connect-white.png";
+import bankList from "views/assets/icons/bank-white.png";
+import leftPlataform from "views/assets/icons/left-white.png";
 
 export const useHomeAuthenticated = () => {
   const [user, setUser] = useState({});
   const [stateMain, setStateMain] = useState(false);
   const [stateModal, setStateModal] = useState(false);
   const [stateCode, setStateCode] = useState(false);
+  const [userUpdated, setUserUpdate] = useState(false);
 
   const { showToastMessage } = useApp();
 
   const history = useHistory();
 
   useEffect(() => {
-    getUser()
-      .then(setUser)
-      .catch((error) => {
-        console.log(error);
-        history.push("/login");
-      });
-  }, []);
+    if (!userUpdated) {
+      getUser()
+        .then(setUser)
+        .catch((error) => {
+          console.log(error);
+          history.push("/login");
+          showToastMessage("Erro na autenticação", "msgError");
+        });
+      setUserUpdate(true);
+    }
+  }, [userUpdated]);
 
   const initialValues = {
     cpf: "",
@@ -34,7 +46,10 @@ export const useHomeAuthenticated = () => {
   const listMain = [
     {
       name: "Bancos conectado",
-      onClick: () => {},
+      onClick: (e) => {
+        e.stopPropagation();
+      },
+      icon: bankList,
     },
     {
       name: "Conectar novo banco",
@@ -42,6 +57,7 @@ export const useHomeAuthenticated = () => {
         e.stopPropagation();
         setStateModal(!stateModal);
       },
+      icon: bankConectIcon,
     },
     {
       name: "Desconectar-se",
@@ -49,8 +65,9 @@ export const useHomeAuthenticated = () => {
         e.stopPropagation();
         logoutUser();
         history.push("/login");
-        showToastMessage("Desconectado com sucesso")
+        showToastMessage("Desconectado com sucesso");
       },
+      icon: leftPlataform,
     },
   ];
 
@@ -60,7 +77,7 @@ export const useHomeAuthenticated = () => {
     if (stateCode) {
       const payload = {
         code_id: values?.code,
-        number: values?.bank,
+        number: values?.bank?.value,
       };
       const response = await authNubank(payload);
 
@@ -68,7 +85,9 @@ export const useHomeAuthenticated = () => {
         showToastMessage("Banco conectado com sucesso");
         setStateModal(false);
       } else {
-        showToastMessage("Erro ao tentar conectar com Banco", "msgError");
+        const errorMessage =
+          response?.message || "Erro ao tentar conectar com Banco";
+        showToastMessage(errorMessage, "msgError");
       }
 
       setSubmitting(false);
@@ -87,7 +106,8 @@ export const useHomeAuthenticated = () => {
       setStateCode(true);
       showToastMessage("Código enviado com sucesso");
     } else {
-      showToastMessage("Erro ao tentar enviar código", "msgError");
+      const errorMessage = response?.message || "Erro ao tentar enviar código";
+      showToastMessage(errorMessage, "msgError");
     }
 
     setSubmitting(false);

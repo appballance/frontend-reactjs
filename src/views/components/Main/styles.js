@@ -29,25 +29,28 @@ export const List = styled.ul`
   list-style: none;
   gap: 10px;
   padding-top: 40px;
-  /* padding-left: 15px; */
 `;
 
 export const ListELement = styled.li`
-  display: ${({ state }) => (state ? "flex" : "none")};
   width: 100%;
   color: ${({ theme: { colors } }) => colors.white_1};
   padding: 10px 0;
   display: flex;
   align-items: center;
+  justify-content: ${({ state }) => !state ? "center" : "flex-state"};
   cursor: pointer;
 
   a {
     padding-left: 15px;
-    display: ${({ state }) => (state ? "flex" : "none")};
   }
 
   :hover {
     background-color: ${({ theme: { colors }, state }) =>
       state ? colors.purple_2 : colors.purple_1};
   }
+`;
+
+export const Icon = styled.img`
+  width: 20px;
+  height: 20px;
 `;
