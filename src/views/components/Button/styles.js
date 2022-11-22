@@ -3,7 +3,8 @@ import { transparentize, shade } from "polished";
 import ReactLoading from "react-loading";
 
 export const ButtonElement = styled.button`
-  background-color: ${({ bgColor }) => bgColor};
+  background-color: ${({ bgColor, loading }) =>
+    loading === "true" ? transparentize(0.6, bgColor) : bgColor};
   cursor: ${({ loading }) => (loading === "true" ? "not-allowed" : "pointer")};
   width: ${({ width }) => width};
   height: 47px;
@@ -18,7 +19,7 @@ export const ButtonElement = styled.button`
   color: #ffffff;
   &:hover {
     background-color: ${({ bgColor, loading }) =>
-      loading === "true" ? transparentize(0.6, bgColor) : shade(0.3, bgColor)};
+      loading !== "true" && shade(0.3, bgColor)};
   }
   &:disabled {
     background-color: ${({ bgColor }) => transparentize(0.6, bgColor)};
