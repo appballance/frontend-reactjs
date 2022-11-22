@@ -14,11 +14,9 @@ const HomeAuthenticated = () => {
     setStateMain,
     stateModal,
     setStateModal,
-    setFormDataByKey,
     onSubmit,
-    isSubmitting,
     stateCode,
-    formData,
+    initialValues,
   } = useHomeAuthenticated();
 
   return (
@@ -33,11 +31,9 @@ const HomeAuthenticated = () => {
           setState={setStateModal}
           formContent={
             <FormModalConnectBank
-              setFormDataByKey={setFormDataByKey}
               onSubmit={onSubmit}
-              isSubmitting={isSubmitting}
               stateCode={stateCode}
-              formData={formData}
+              initialValues={initialValues}
             />
           }
         />

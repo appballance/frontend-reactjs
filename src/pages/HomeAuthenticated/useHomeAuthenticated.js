@@ -10,12 +10,6 @@ export const useHomeAuthenticated = () => {
   const [stateMain, setStateMain] = useState(false);
   const [stateModal, setStateModal] = useState(false);
   const [stateCode, setStateCode] = useState(false);
-  const [isSubmitting, setSubmitting] = useState(false);
-  const [formData, setFormData] = useState({
-    cpf: "",
-    password: "",
-    code: "",
-  });
 
   const { showToastMessage } = useApp();
 
@@ -29,6 +23,13 @@ export const useHomeAuthenticated = () => {
         history.push("/login");
       });
   }, []);
+
+  const initialValues = {
+    cpf: "",
+    password: "",
+    code: "",
+    bank: null,
+  };
 
   const listMain = [
     {
@@ -48,15 +49,20 @@ export const useHomeAuthenticated = () => {
         e.stopPropagation();
         logoutUser();
         history.push("/login");
+        showToastMessage("Desconectado com sucesso")
       },
     },
   ];
 
-  const onSubmit = async (values) => {
+  const onSubmit = async (values, { setSubmitting }) => {
     setSubmitting(true);
 
     if (stateCode) {
-      const response = await authNubank(values?.code);
+      const payload = {
+        code_id: values?.code,
+        number: values?.bank,
+      };
+      const response = await authNubank(payload);
 
       if (response?.success) {
         showToastMessage("Banco conectado com sucesso");
@@ -69,10 +75,13 @@ export const useHomeAuthenticated = () => {
       return;
     }
 
-    const response = await sendCodeByEmailNubank({
+    const payload = {
       cpf: values?.cpf,
       password: values?.password,
-    });
+      device_id: window.navigator.platform,
+      number: values?.bank?.value,
+    };
+    const response = await sendCodeByEmailNubank(payload);
 
     if (response?.success) {
       setStateCode(true);
@@ -84,12 +93,6 @@ export const useHomeAuthenticated = () => {
     setSubmitting(false);
   };
 
-  const setFormDataByKey = (key, value) =>
-    setFormData({
-      ...formData,
-      [key]: value,
-    });
-
   return {
     user,
     listMain,
@@ -97,10 +100,8 @@ export const useHomeAuthenticated = () => {
     setStateMain,
     stateModal,
     setStateModal,
-    setFormDataByKey,
     onSubmit,
-    isSubmitting,
     stateCode,
-    formData,
+    initialValues,
   };
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import { FormikProvider } from "formik";
 import { ThemeProvider } from "styled-components";
 import { ToastContainer } from "react-toastify";
 
@@ -15,9 +16,11 @@ const App = () => (
   <ThemeProvider theme={DefaultTheme}>
     <UserProvider>
       <AppProvider>
-        <GlobalStyles />
-        <ToastContainer />
-        <Routes />
+        <FormikProvider>
+          <GlobalStyles />
+          <ToastContainer />
+          <Routes />
+        </FormikProvider>
       </AppProvider>
     </UserProvider>
   </ThemeProvider>

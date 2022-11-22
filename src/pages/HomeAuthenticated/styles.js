@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { Form } from "formik";
+
 
 import { Button as ButtonComponent } from "../../components";
 
@@ -20,7 +22,7 @@ export const Right = styled.div`
   }
 `;
 
-export const FormModal = styled.div`
+export const FormModal = styled(Form)`
   display: flex;
   flex-direction: column;
   gap: 10px;

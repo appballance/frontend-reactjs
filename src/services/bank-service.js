@@ -1,14 +1,11 @@
 import { postService } from "./api";
 
-export const sendCodeByEmailNubank = async (data) => {
-  const response = await postService("nubank/send-email-code", {
-    ...data,
-    device_id:  window.navigator.platform,
-  });
+export const sendCodeByEmailNubank = async (payload) => {
+  const response = await postService("nubank/send-email-code", payload);
   return response;
 };
 
-export const authNubank = async (code_id) => {
-  const response = await postService(`nubank/auth/${code_id}`);
+export const authNubank = async (payload) => {
+  const response = await postService("nubank/auth", payload);
   return response;
 };
