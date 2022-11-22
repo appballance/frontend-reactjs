@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const InputContainer = styled.div`
   width: ${({ width }) => width};
   text-align: left;
-  display: flex;
+  display: ${({ hide }) => hide ? "none" : "flex"};
   justify-content: center;
   flex-direction: column;
 `;
