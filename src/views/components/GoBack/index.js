@@ -3,8 +3,8 @@ import { useHistory } from "react-router-dom";
 
 import * as S from "./styles";
 
-import goBackBlack from "../../assets/icons/goBackBlack.png";
-import goBackWhite from "../../assets/icons/goBackWhite.png";
+import goBackBlack from "../../assets/icons/go-back.png";
+import goBackWhite from "../../assets/icons/go-back-white.png";
 
 export const GoBack = ({
   title = "",
