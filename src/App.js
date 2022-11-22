@@ -5,12 +5,12 @@ import { ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 
-import Routes from "./router";
+import Routes from "./routes";
 
-import { GlobalStyles } from "./styles/globalStyles";
-import DefaultTheme from "./styles/defaultTheme";
+import { GlobalStyles } from "views/styles/globalStyles";
+import DefaultTheme from "views/styles/defaultTheme";
 
-import { AppProvider, UserProvider } from "./application/context";
+import { AppProvider, UserProvider } from "application/context";
 
 const App = () => (
   <ThemeProvider theme={DefaultTheme}>

@@ -1,7 +1,7 @@
 import React from "react";
 import { useFormikContext } from "formik";
 
-import { Input } from "../../../../../components";
+import { Input } from "views/components";
 
 export const Nubank = ({ stateCode }) => {
   const { setFieldValue, values } = useFormikContext();

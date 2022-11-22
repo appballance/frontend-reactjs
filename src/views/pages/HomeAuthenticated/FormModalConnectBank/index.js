@@ -1,8 +1,8 @@
 import React from "react";
 import { Formik } from "formik";
 
-import { banksMock } from "../../../application/mocks";
-import { Input, Select } from "../../../components";
+import { banksMock } from "application/mocks";
+import { Input, Select } from "views/components";
 
 import * as S from "../styles";
 

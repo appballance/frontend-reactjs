@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import { useApp } from "../../application/context";
-import { authenticateUser } from "../../services/auth";
+import { useApp } from "application/context";
+import { authenticateUser } from "infrastructure/services/auth";
 import { loginSchema } from "./loginSchema";
 
 export const useLogin = () => {

@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 
-import { CODE_BANK } from "../../../../application/mocks";
+import { CODE_BANK } from "application/mocks";
 
 import { Nubank } from "./Nubank";
 

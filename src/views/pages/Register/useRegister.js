@@ -1,9 +1,8 @@
-// import { useState } from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import { useApp } from "../../application/context";
-import { registerUser } from "../../services/user-service";
+import { useApp } from "application/context";
+import { registerUser } from "infrastructure/services/user-service";
 import { registerSchema } from "./registerSchema";
 
 export const useRegister = () => {

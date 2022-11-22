@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import { useApp } from "../../application/context";
-import { getUser, logoutUser } from "../../services/user-service";
-import { authNubank, sendCodeByEmailNubank } from "../../services/bank-service";
+import { useApp } from "application/context";
+import { getUser, logoutUser } from "infrastructure/services/user-service";
+import { authNubank, sendCodeByEmailNubank } from "infrastructure/services/bank-service";
 
 export const useHomeAuthenticated = () => {
   const [user, setUser] = useState({});
