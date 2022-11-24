@@ -77,7 +77,7 @@ export const useHomeAuthenticated = () => {
     if (stateCode) {
       const payload = {
         code_id: values?.code,
-        number: values?.bank?.value,
+        code: values?.bank?.value,
       };
       const response = await authNubank(payload);
 
@@ -98,7 +98,7 @@ export const useHomeAuthenticated = () => {
       cpf: values?.cpf,
       password: values?.password,
       device_id: window.navigator.platform,
-      number: values?.bank?.value,
+      code: values?.bank?.value,
     };
     const response = await sendCodeByEmailNubank(payload);
 
