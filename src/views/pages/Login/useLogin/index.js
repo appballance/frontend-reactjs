@@ -1,25 +1,21 @@
-import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { useApp } from "application/context";
 import { authenticateUser } from "infrastructure/services/auth";
-import { loginSchema } from "./loginSchema";
+import { loginSchema } from "../loginSchema";
 
 export const useLogin = () => {
-  const [loading, setLoading] = useState(false);
-  const [login, setLogin] = useState({});
-
   const { showToastMessage } = useApp();
 
   const history = useHistory();
 
-  const onClick = async () => {
-    setLoading(true);
-    const response = await authenticateUser(login.email, login.password);
-    setLoading(false);
+  const onSubmit = async (values, { setSubmitting }) => {
+    setSubmitting(true);
+    const response = await authenticateUser(values.email, values.password);
 
     if (!response?.token) {
       showToastMessage("Email ou senha incorreto", "msgError");
+      setSubmitting(false);
       return;
     }
 
@@ -29,10 +25,7 @@ export const useLogin = () => {
   };
 
   return {
-    loading,
-    onClick,
-    login,
-    setLogin,
+    onSubmit,
     loginSchema
   };
 };

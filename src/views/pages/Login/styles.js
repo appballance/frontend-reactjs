@@ -1,3 +1,4 @@
+import { Form } from "formik";
 import styled from "styled-components";
 
 import { Button, GoBack } from "../../components";
@@ -52,7 +53,7 @@ export const Right = styled.div`
   }
 `;
 
-export const Box = styled.div`
+export const Box = styled(Form)`
   width: 100%;
   height: 100%;
   display: flex;
