@@ -3,7 +3,7 @@ import React from "react";
 import * as S from "./styles";
 
 const Button = ({
-  onClick,
+  onClick = () => {},
   bgColor = "#9448BC",
   children = "Children",
   disable,

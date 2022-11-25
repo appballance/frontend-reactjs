@@ -22,7 +22,15 @@ const Main = ({
     <S.List>
       {listContent.length &&
         listContent.map((element, index) => (
-          <S.ListELement key={index} state={state} onClick={element?.onClick}>
+          <S.ListELement
+            key={index}
+            state={state}
+            onClick={(e) => {
+              if (state) {
+                element?.onClick(e);
+              }
+            }}
+          >
             {state && <a>{element?.name}</a>}
             {!state && <S.Icon src={element?.icon} />}
           </S.ListELement>
