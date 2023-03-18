@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Main, ModalConectBank } from "../../components";
+import { Main, ModalConectBank, Table } from "../../components";
 import { useHomeAuthenticated } from "./useHomeAuthenticated";
 import { FormModalConnectBank } from "./FormModalConnectBank";
 
@@ -21,9 +21,21 @@ const HomeAuthenticated = () => {
 
   return (
     <S.HomeContainer>
-      <Main listContent={listMain} state={stateMain} setState={setStateMain} />
+      <S.Left>
+        <Main
+          listContent={listMain}
+          state={stateMain}
+          setState={setStateMain}
+        />
+      </S.Left>
       <S.Right state={stateMain}>
         <S.HomeTitle>{user?.surname}</S.HomeTitle>
+
+        <S.ContainerTables>
+          {user?.banks?.map((bank) => (
+            <Table bank={bank} key={bank.id} />
+          ))}
+        </S.ContainerTables>
       </S.Right>
       {stateModal && (
         <ModalConectBank

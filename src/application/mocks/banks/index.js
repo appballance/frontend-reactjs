@@ -1,8 +1,4 @@
-export const CODE_BANK = {
-  NUBANK: "260",
-  BRAZIL_BANK: "001",
-  PICPAY: "380",
-}
+import { CODE_BANK } from "application/constant";
 
 export const banksMock = [
   { value: CODE_BANK.NUBANK, label: "NU PAGAMENTOS S.A" },
