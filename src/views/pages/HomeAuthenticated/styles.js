@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Form } from "formik";
 
-
 import { Button as ButtonComponent } from "../../components";
 
 export const HomeContainer = styled.div`
@@ -17,9 +16,19 @@ export const HomeTitle = styled.div`
 export const Left = styled.div``;
 
 export const Right = styled.div`
+  width: 100%;
+
   @media (max-width: ${({ theme: { media } }) => media.tablet_landscape}) {
-    width: ${({ state }) => (state ? "0%" : "fit_content")};
+    width: ${({ state }) => (state ? "0%" : "100%")};
   }
+`;
+
+export const ContainerTables = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 40px 0 40px;
 `;
 
 export const FormModal = styled(Form)`
@@ -38,7 +47,7 @@ export const AlertCodeSended = styled.div`
   border-radius: 5px;
   width: calc(100% - 2px);
   height: fit-content;
-  color: #37323E;
+  color: #37323e;
   font-weight: bolder;
 `;
 
@@ -48,6 +57,6 @@ export const AlertContent = styled.p`
   padding: 10px;
   margin-top: 5px;
 
-  color: #37323E;
+  color: #37323e;
   font-weight: normal;
 `;

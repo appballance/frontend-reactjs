@@ -1,4 +1,4 @@
-import { CODE_BANK } from "application/mocks";
+import { CODE_BANK } from "application/constant";
 
 export const useFormBanks = () => {
   const stylesBanks = {

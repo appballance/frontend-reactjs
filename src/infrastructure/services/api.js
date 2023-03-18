@@ -1,5 +1,9 @@
 import axios from "axios";
 
+import { Config } from "application/constant";
+
+const { STAGE } = Config;
+
 export const getService = async (path) => {
   const token = localStorage.getItem("token");
   const config = {
@@ -7,14 +11,14 @@ export const getService = async (path) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  const url = `${process.env.REACT_APP_BASE_URL}/${path}`;
+  const url = `${STAGE.BASE_URL}/${path}`;
 
   const response = await axios.get(url, config);
   return response?.data;
 };
 
 export const postService = async (path, body) => {
-  const url = `${process.env.REACT_APP_BASE_URL}/${path}`;
+  const url = `${STAGE.BASE_URL}/${path}`;
   const token = localStorage.getItem("token");
   const config = {
     headers: {
@@ -24,7 +28,7 @@ export const postService = async (path, body) => {
 
   try {
     const response = await axios.post(url, body, config);
-    return response?.data; 
+    return response?.data;
   } catch (error) {
     return error;
   }
