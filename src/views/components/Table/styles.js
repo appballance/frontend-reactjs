@@ -13,5 +13,17 @@ export const Title = styled.p`
     isDisabled &&
     css`
       cursor: not-allowed;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;ƒ
+    `}
+
+  ${({ hasRedirect }) =>
+    !hasRedirect &&
+    css`
+      cursor: default;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     `}
 `;

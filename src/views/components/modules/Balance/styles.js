@@ -1,31 +1,28 @@
 import styled from "styled-components";
 import { Form } from "formik";
 
-import { Button as ButtonComponent } from "../../components";
+import { Button as ButtonComponent } from "../../../components";
 
 export const HomeContainer = styled.div`
+  width: 100%;
+  height: unset;
   display: flex;
-  flex-direction: column;
-  padding: 40px 40px 0 40px;
-`;
-
-export const TableContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+  flex-direction: row;
 `;
 
 export const HomeTitle = styled.div`
   padding: 20px 0 0 20px;
 `;
 
-export const Left = styled.div``;
+export const Left = styled.div`
+  height: unset;
+`;
 
 export const Right = styled.div`
   width: 100%;
 
   @media (max-width: ${({ theme: { media } }) => media.tablet_landscape}) {
-    width: ${({ state }) => (state ? "0%" : "100%")};
+    width: ${({ state }) => (state ? "0%" : "fit-content")};
   }
 `;
 

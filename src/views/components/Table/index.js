@@ -1,15 +1,32 @@
 import * as React from "react";
 import { useHistory } from "react-router-dom";
 
-import { Table, TableBody, TableContainer } from "@mui/material";
+import {
+  Skeleton,
+  Table,
+  TableBody,
+  TableContainer,
+  TableFooter,
+  TableRow,
+} from "@mui/material";
 
-import { banksMock } from "application/mocks";
+import { banksMock, bankMock } from "application/mocks";
 
 import { Row } from "./Row";
+import { Pagination } from "./Pagination";
 
 import * as S from "./styles";
 
-export const CustomTable = ({ bank }) => {
+export const CustomTable = ({
+  isLoading,
+  bank,
+  page = 0,
+  setPage,
+  restProps,
+  hasPagination = false,
+  rowSkeleton = 10,
+  hasRedirect = false,
+}) => {
   const history = useHistory();
 
   const getRows = (data = []) => data;
@@ -19,23 +36,50 @@ export const CustomTable = ({ bank }) => {
   );
 
   const redirectToBankDetails = () => {
-    history.push("/bank", {
-      entity_id: bank.entity_id,
-    });
+    if (hasRedirect) {
+      history.push("/bank", {
+        bankId: bank.entity_id,
+      });
+    }
   };
 
+  const rows = getRows(
+    isLoading
+      ? bankMock?.transactions?.slice(0, rowSkeleton)
+      : bank?.transactions
+  );
+
   return (
-    <TableContainer>
-      <S.Title onClick={redirectToBankDetails}>
-        {responseBankTitle.label}
+    <TableContainer {...restProps}>
+      <S.Title onClick={redirectToBankDetails} hasRedirect={hasRedirect}>
+        {isLoading ? (
+          <Skeleton variant="text" width={250} />
+        ) : (
+          responseBankTitle?.label
+        )}
       </S.Title>
-      <Table sx={{ minWidth: 300 }}>
+      <Table>
         <TableBody>
-          {getRows(bank.transactions)?.map((transaction) => (
-            <Row key={transaction?.address} {...transaction} />
+          {rows?.map((transaction, index) => (
+            <Row key={index} isLoading={isLoading} {...transaction} />
           ))}
         </TableBody>
       </Table>
+
+      {hasPagination && (
+        <TableFooter>
+          <TableRow>
+            <Pagination
+              count={rows?.length}
+              isLoading={isLoading}
+              page={page}
+              onPageChange={(page) => {
+                setPage(page);
+              }}
+            />
+          </TableRow>
+        </TableFooter>
+      )}
     </TableContainer>
   );
 };

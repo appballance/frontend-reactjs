@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const MainContent = styled.div`
   width: ${({ state }) => (state ? "200px" : "70px")};
-  height: unset;
+  height: 100%;
   min-height: 100vh;
   background-color: ${({ theme: { colors } }) => colors.purple_1};
 
@@ -40,7 +40,7 @@ export const ListELement = styled.li`
   justify-content: ${({ state }) => !state ? "center" : "flex-state"};
   cursor: pointer;
 
-  a {
+  p {
     padding-left: 15px;
   }
 
