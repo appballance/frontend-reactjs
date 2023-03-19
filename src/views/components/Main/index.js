@@ -27,11 +27,11 @@ const Main = ({
             state={state}
             onClick={(e) => {
               if (state) {
-                element?.onClick(e);
+                element.onClick(e);
               }
             }}
           >
-            {state && <a>{element?.name}</a>}
+            {state && <p>{element?.name}</p>}
             {!state && <S.Icon src={element?.icon} />}
           </S.ListELement>
         ))}

@@ -20,7 +20,7 @@ export const useLogin = () => {
     }
 
     showToastMessage("Login realizado com sucesso");
-    history.push("/home");
+    history.push("/balance");
     return;
   };
 

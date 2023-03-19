@@ -1,10 +1,15 @@
 import { getService, postService } from "./api";
 
 export const authenticateUser = async (email, password) => {
-  const response = await postService("auth", {
-    email: email,
-    password: password,
-  });
+  const isAuth = true;
+  const response = await postService(
+    "auth",
+    {
+      email: email,
+      password: password,
+    },
+    isAuth
+  );
 
   if (!response?.token) {
     return response;

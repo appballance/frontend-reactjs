@@ -17,14 +17,16 @@ export const getService = async (path) => {
   return response?.data;
 };
 
-export const postService = async (path, body) => {
+export const postService = async (path, body, isAuth = false) => {
   const url = `${STAGE.BASE_URL}/${path}`;
   const token = localStorage.getItem("token");
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
+  const config = isAuth
+    ? {}
+    : {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
 
   try {
     const response = await axios.post(url, body, config);

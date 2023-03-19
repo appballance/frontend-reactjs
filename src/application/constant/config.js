@@ -17,7 +17,7 @@ const Config = {
     AUTH: "auth",
     USERS: "users",
   },
-  STAGE: STAGE[TYPE_STAGES.DEV], // change to DEV
+  STAGE: STAGE[TYPE_STAGES.DEV],
 };
 
 export { Config };

@@ -1,4 +1,6 @@
+import React from "react";
 import { useHistory } from "react-router-dom";
+
 import * as S from "./styles";
 
 import peopleCard from "../../assets/home/people-card.svg";
