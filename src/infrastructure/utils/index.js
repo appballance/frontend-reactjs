@@ -1,0 +1,1 @@
+export { maskCpf } from "./formatters";
