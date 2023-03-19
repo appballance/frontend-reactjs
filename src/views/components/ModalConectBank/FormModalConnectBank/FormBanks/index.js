@@ -2,6 +2,7 @@ import React from "react";
 import { useFormikContext } from "formik";
 
 import { Input } from "views/components";
+import { maskCpf } from "infrastructure/utils";
 
 import { useFormBanks } from "./useFormBanks";
 
@@ -16,7 +17,7 @@ export const FormBanks = ({ codeBank = null, stateCode }) => {
         name="cpf"
         label="CPF"
         value={values["cpf"]}
-        onChange={(e) => setFieldValue("cpf", e.target.value)}
+        onChange={(e) => setFieldValue("cpf", maskCpf(e.target.value))}
       />
       <Input
         hide={getCurrentBankStyle(codeBank)?.hide || stateCode}

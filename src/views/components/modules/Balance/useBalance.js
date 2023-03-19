@@ -56,7 +56,7 @@ export const useBalance = () => {
     },
   ];
 
-  const onSubmit = async (values, { setSubmitting }) => {
+  const onSubmit = async (values, { setSubmitting, resetForm }) => {
     setSubmitting(true);
 
     if (stateCode) {
@@ -89,6 +89,7 @@ export const useBalance = () => {
     const response = await sendCodeByEmailNubank(payload);
 
     if (response?.success) {
+      resetForm();
       setStateCode(true);
       showToastMessage("Código enviado com sucesso");
     } else {
