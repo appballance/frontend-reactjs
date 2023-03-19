@@ -8,13 +8,17 @@ import * as S from "../styles";
 
 import { FormBanks } from "./FormBanks";
 
-export const FormModalConnectBank = ({ stateCode, initialValues, onSubmit }) => (
-  <Formik 
+export const FormModalConnectBank = ({
+  stateCode,
+  initialValues,
+  onSubmit,
+}) => (
+  <Formik
     // validationSchema={validationSchema} // de acordo com o banco selecionado
-    initialValues={initialValues} 
+    initialValues={initialValues}
     onSubmit={onSubmit}
   >
-    {({ values, setFieldValue, isSubmitting }) => (
+    {({ values, setFieldValue, isSubmitting, handleSubmit }) => (
       <S.FormModal>
         {!stateCode && (
           <Select
@@ -47,7 +51,7 @@ export const FormModalConnectBank = ({ stateCode, initialValues, onSubmit }) => 
         <S.Button
           disable={isSubmitting}
           loading={isSubmitting}
-          type="submit"
+          onClick={handleSubmit}
         >
           Enviar
         </S.Button>
