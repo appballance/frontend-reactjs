@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useHistory } from "react-router-dom";
 
 import {
   Skeleton,
@@ -10,58 +9,45 @@ import {
   TableRow,
 } from "@mui/material";
 
-import { banksMock, bankMock } from "application/mocks";
-
 import { Row } from "./Row";
+import { Header } from "./Header";
 import { Pagination } from "./Pagination";
 
 import * as S from "./styles";
 
 export const CustomTable = ({
   isLoading,
-  bank,
+  title,
+  headerContent,
+  rowsContent,
   page = 0,
   setPage,
   restProps,
   hasPagination = false,
   rowSkeleton = 10,
-  hasRedirect = false,
+  titleOnClick = false,
 }) => {
-  const history = useHistory();
-
-  const getRows = (data = []) => data;
-
-  const responseBankTitle = banksMock?.find(
-    ({ value }) => value === bank?.code
-  );
-
-  const redirectToBankDetails = () => {
-    if (hasRedirect) {
-      history.push("/bank", {
-        bankId: bank.entity_id,
-      });
-    }
-  };
-
-  const rows = getRows(
-    isLoading
-      ? bankMock?.transactions?.slice(0, rowSkeleton)
-      : bank?.transactions
-  );
+  const getRows = (data = []) =>
+    isLoading ? data?.slice(0, rowSkeleton) : data;
 
   return (
     <TableContainer {...restProps}>
-      <S.Title onClick={redirectToBankDetails} hasRedirect={hasRedirect}>
-        {isLoading ? (
-          <Skeleton variant="text" width={250} />
-        ) : (
-          responseBankTitle?.label
-        )}
+      <S.Title
+        onClick={() => {
+          if (titleOnClick) {
+            titleOnClick();
+          }
+        }}
+        hasRedirect={!!titleOnClick}
+      >
+        {isLoading ? <Skeleton variant="text" width={250} /> : title}
       </S.Title>
+
       <Table>
+        <Header row={headerContent} isLoading={isLoading} />
         <TableBody>
-          {rows?.map((transaction, index) => (
-            <Row key={index} isLoading={isLoading} {...transaction} />
+          {getRows(rowsContent)?.map((rowContent, index) => (
+            <Row key={index} row={rowContent} isLoading={isLoading} />
           ))}
         </TableBody>
       </Table>
@@ -70,7 +56,7 @@ export const CustomTable = ({
         <TableFooter>
           <TableRow>
             <Pagination
-              count={rows?.length}
+              count={rowsContent?.length}
               isLoading={isLoading}
               page={page}
               onPageChange={(page) => {

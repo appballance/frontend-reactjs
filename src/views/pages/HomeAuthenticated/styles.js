@@ -11,3 +11,8 @@ export const TableContainer = styled.div`
   flex-direction: column;
   gap: 30px;
 `;
+
+export const RowIcon = styled.img`
+  width: 30px;
+  height: 30px;
+`;
