@@ -13,9 +13,15 @@ const Bank = (props) => {
       state: { bankId },
     },
   } = props;
-  const { bank, page, setPage, isLoading, redirectHome } = useBank(bankId);
-
-  console.log("page ::", page);
+  const {
+    page,
+    setPage,
+    isLoading,
+    redirectHome,
+    headerContent,
+    rowsContent,
+    bankTitle,
+  } = useBank(bankId);
 
   return (
     <Balance>
@@ -23,8 +29,10 @@ const Bank = (props) => {
       <S.HomeContainer>
         <S.TableContainer>
           <Table
+            title={bankTitle}
+            headerContent={headerContent}
+            rowsContent={rowsContent}
             isLoading={isLoading}
-            bank={bank}
             page={page}
             setPage={setPage}
             hasPagination

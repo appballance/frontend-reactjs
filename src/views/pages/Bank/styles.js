@@ -7,3 +7,9 @@ export const HomeContainer = styled.div`
 `;
 
 export const TableContainer = styled.div``;
+
+export const RowIcon = styled.img`
+  width: 30px;
+  height: 30px;
+`;
+
