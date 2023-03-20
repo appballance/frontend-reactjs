@@ -14,8 +14,6 @@ export const Row = ({
   type_payment,
   type_transaction,
 }) => {
-  console.log("");
-
   const CustomCell = ({
     children,
     typeSkeleton = "text",
