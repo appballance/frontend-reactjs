@@ -6,8 +6,9 @@ export const MainContent = styled.div`
   min-height: 100vh;
   background-color: ${({ theme: { colors } }) => colors.purple_1};
 
-  @media (max-width: ${({ theme: { media } }) => media.tablet_landscape}) {
+  @media (max-width: ${({ theme: { media } }) => media.tablet_portrait}) {
     width: ${({ state }) => (state ? "100%" : "70px")};
+    position: ${({ state }) => (state ? "absolute" : "relative")};
   }
 
   display: flex;
@@ -37,7 +38,7 @@ export const ListELement = styled.li`
   padding: 10px 0;
   display: flex;
   align-items: center;
-  justify-content: ${({ state }) => !state ? "center" : "flex-state"};
+  justify-content: ${({ state }) => (!state ? "center" : "flex-state")};
   cursor: pointer;
 
   p {

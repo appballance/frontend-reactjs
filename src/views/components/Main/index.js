@@ -1,5 +1,7 @@
 import React from "react";
 
+import logo from "views/assets/icons/logo.svg";
+
 import * as S from "./styles";
 
 const Main = ({
@@ -18,7 +20,7 @@ const Main = ({
     state={state}
     {...restProps}
   >
-    <S.Logo state={state} />
+    <S.Logo src={logo} />
     <S.List>
       {listContent.length &&
         listContent.map((element, index) => (

@@ -20,10 +20,6 @@ export const Left = styled.div`
 
 export const Right = styled.div`
   width: 100%;
-
-  @media (max-width: ${({ theme: { media } }) => media.tablet_landscape}) {
-    width: ${({ state }) => (state ? "0%" : "fit-content")};
-  }
 `;
 
 export const ContainerTables = styled.div`
