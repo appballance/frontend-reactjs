@@ -13,3 +13,11 @@ export const maskCpf = (value) => {
   }
   return value;
 };
+
+export const maskReal = (value) => {
+  const responseValue = value.toLocaleString("pt-br", {
+    style: "currency",
+    currency: "BRL",
+  });
+  return responseValue;
+};

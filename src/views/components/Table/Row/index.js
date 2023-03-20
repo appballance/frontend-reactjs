@@ -1,6 +1,7 @@
 import React from "react";
-
 import { TableCell, TableRow, Skeleton } from "@mui/material";
+
+import { maskReal } from "infrastructure/utils";
 
 import income from "views/assets/icons/income.png";
 import expense from "views/assets/icons/expense.png";
@@ -14,8 +15,6 @@ export const Row = ({
   type_payment,
   type_transaction,
 }) => {
-  console.log("");
-
   const CustomCell = ({
     children,
     typeSkeleton = "text",
@@ -37,7 +36,7 @@ export const Row = ({
         {address}
       </CustomCell>
       <CustomCell style={{ width: 160 }} align="right">
-        {amount}
+        {maskReal(amount)}
       </CustomCell>
       <CustomCell style={{ width: 160 }} align="right">
         {type_payment}
