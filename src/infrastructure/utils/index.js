@@ -1,1 +1,1 @@
-export { maskCpf } from "./formatters";
+export { maskCpf, maskReal } from "./formatters";
