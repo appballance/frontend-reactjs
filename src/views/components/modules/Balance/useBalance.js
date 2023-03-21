@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { useApp } from "application/context";
+import { removeMaskCpf } from "infrastructure/utils";
 import { logoutUser } from "infrastructure/services/user-service";
 import {
   authNubank,
@@ -80,7 +81,7 @@ export const useBalance = () => {
     }
 
     const payload = {
-      cpf: values?.cpf,
+      cpf: removeMaskCpf(values?.cpf),
       password: values?.password,
       device_id: window.navigator.platform,
       code: values?.bank?.value,

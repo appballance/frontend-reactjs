@@ -21,3 +21,13 @@ export const maskReal = (value) => {
   });
   return responseValue;
 };
+
+export const removeMaskCpf = (value) => {
+  const result = value
+    ?.replace(".", "")
+    ?.replace(".", "")
+    ?.replace("-", "")
+    ?.replace("/", "");
+
+  return result;
+};
