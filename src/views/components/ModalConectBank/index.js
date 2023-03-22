@@ -56,14 +56,14 @@ export const ModalConectBank = ({
               )}
 
               <Input
-                hide={getCurrentBankStyle(stateCode)?.hide || stateCode}
+                hide={getCurrentBankStyle(values?.bank?.value)?.hide || stateCode}
                 name="cpf"
                 label="CPF - Cadastrado no Banco"
                 value={values["cpf"]}
                 onChange={(e) => setFieldValue("cpf", maskCpf(e.target.value))}
               />
               <Input
-                hide={getCurrentBankStyle(stateCode)?.hide || stateCode}
+                hide={getCurrentBankStyle(values?.bank?.value)?.hide || stateCode}
                 name="password"
                 label="Senha - Cadastrada no Banco"
                 type="password"
