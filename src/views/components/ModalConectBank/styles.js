@@ -1,15 +1,14 @@
+import { Form } from "formik";
 import styled from "styled-components";
 
 import { Button as ButtonComponent } from "../../components";
 
-
-export const MainContent = styled.div`
-  background-color: ${({ theme: { colors } }) => colors.black_1};
+export const Container = styled.div`
+  background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
   height: unset;
   min-height: 100vh;
   position: absolute;
-  opacity: 0.8;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,15 +17,12 @@ export const MainContent = styled.div`
 export const Modal = styled.div`
   background-color: ${({ theme: { colors } }) => colors.white_1};
   width: 400px;
-  /* height: 500px; */
-  border-radius: 30px;
+  border-radius: 15px;
   padding: 40px;
   display: flex;
   flex-direction: column;
   gap: 30px;
 `;
-
-export const Form = styled.div``;
 
 export const Button = styled(ButtonComponent)`
   display: flex;
