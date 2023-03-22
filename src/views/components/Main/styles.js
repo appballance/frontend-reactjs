@@ -55,3 +55,11 @@ export const Icon = styled.img`
   width: 20px;
   height: 20px;
 `;
+
+export const Footer = styled.footer`
+  position: absolute;
+  bottom: 0;
+  padding: 10px;
+  color: #fff;
+  font-size: 11px;
+`;

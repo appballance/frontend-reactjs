@@ -38,6 +38,13 @@ const Main = ({
           </S.ListELement>
         ))}
     </S.List>
+
+    {state && (
+      <S.Footer>
+        © Todos os direitos reservados. <br />
+        Balance, desde 2021.
+      </S.Footer>
+    )}
   </S.MainContent>
 );
 
