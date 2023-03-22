@@ -1,6 +1,6 @@
 import { CODE_BANK } from "application/constant";
 
-export const useFormBanks = () => {
+export const useModalConectBank = () => {
   const stylesBanks = {
     [CODE_BANK.NUBANK]: {
       hide: false,
@@ -16,9 +16,18 @@ export const useFormBanks = () => {
     },
   };
 
-  const getCurrentBankStyle = (currentBankCode = null) => stylesBanks[currentBankCode];
+  const getCurrentBankStyle = (currentBankCode = null) =>
+    stylesBanks[currentBankCode];
+
+  const initialValues = {
+    cpf: "",
+    password: "",
+    code: "",
+    bank: null,
+  };
 
   return {
     getCurrentBankStyle,
+    initialValues,
   };
 };
