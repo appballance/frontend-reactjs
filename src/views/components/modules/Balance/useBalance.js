@@ -70,6 +70,7 @@ export const useBalance = () => {
       if (response?.success) {
         showToastMessage("Banco conectado com sucesso");
         setStateModal(false);
+        resetForm();
       } else {
         const errorMessage =
           response?.message || "Erro ao tentar conectar com Banco";
@@ -90,7 +91,6 @@ export const useBalance = () => {
     const response = await sendCodeByEmailNubank(payload);
 
     if (response?.success) {
-      resetForm();
       setStateCode(true);
       showToastMessage("Código enviado com sucesso");
     } else {
