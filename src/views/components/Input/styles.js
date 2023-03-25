@@ -3,13 +3,13 @@ import styled from "styled-components";
 export const InputContainer = styled.div`
   width: ${({ width }) => width};
   text-align: left;
-  display: ${({ hide }) => hide ? "none" : "flex"};
+  display: ${({ hide }) => (hide ? "none" : "flex")};
   justify-content: center;
   flex-direction: column;
 `;
 
 export const InputLabel = styled.label`
-  color: ${({ labelColor, theme: { colors } }) => labelColor || colors.blue_1};
+  color: ${({ theme: { colors } }) => colors.blue_1};
   font-size: 12px;
   line-height: 18px;
 `;
