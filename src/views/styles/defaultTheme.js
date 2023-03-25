@@ -34,7 +34,8 @@ const theme = {
     white_1: "#FFFFFF",
     black_1: "#000000",
     gray_1: "#A9A4AC",
-  }
+    blue_1: "#141B41",
+  },
 };
 
 export default theme;
