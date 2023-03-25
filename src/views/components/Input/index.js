@@ -7,7 +7,7 @@ const Input = ({
   name,
   type = "text",
   onChange,
-  placeholder = "Digite aqui...",
+  placeholder = "",
   value,
   label = "label",
   width = "100%",
@@ -16,7 +16,7 @@ const Input = ({
   ...rest
 }) => (
   <S.InputContainer {...rest}>
-    <S.InputLabel htmlFor={id}>{label}</S.InputLabel>
+    {!!value?.length && <S.InputLabel htmlFor={id}>{label}</S.InputLabel>}
     <S.InputElement
       id={id}
       name={name}

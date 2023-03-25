@@ -9,7 +9,7 @@ export const InputContainer = styled.div`
 `;
 
 export const InputLabel = styled.label`
-  color: ${({ labelColor, theme: { colors } }) => labelColor || colors.gray_1};
+  color: ${({ labelColor, theme: { colors } }) => labelColor || colors.blue_1};
   font-size: 12px;
   line-height: 18px;
 `;
@@ -19,12 +19,13 @@ export const InputElement = styled.input`
   width: calc(100% - 10px);
   height: 45px;
   padding-left: 10px;
-  color: ${({ theme: { colors } }) => colors.gray_1};
-  border: 1px solid ${({ theme: { colors } }) => colors.gray_1};
-  border-radius: 6px;
+  color: ${({ theme: { colors } }) => colors.blue_1};
+  border: 0;
+  border-bottom: 1px solid ${({ theme: { colors } }) => colors.blue_1};
 
   ::-webkit-input-placeholder {
-    color: ${({ theme: { colors } }) => colors.gray_1};
+    color: ${({ theme: { colors } }) => colors.blue_1};
+    text-transform: capitalize;
   }
 
   textarea:focus,
