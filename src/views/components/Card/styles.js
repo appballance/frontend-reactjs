@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Card = styled.div`
   width: ${({ width }) => width || "125px"};
   height: ${({ height }) => height || "155px"};
-  background-color: ${({ backgroundColor }) => backgroundColor};
+  background: ${({ background }) => background};
   border-radius: ${({ borderRadius }) => "10px" || borderRadius};
   padding: ${({ padding }) => padding || "20px"};
   font-family: "Jost";

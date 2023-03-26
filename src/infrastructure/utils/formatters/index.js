@@ -14,11 +14,16 @@ export const maskCpf = (value) => {
   return value;
 };
 
-export const maskReal = (value) => {
+export const maskReal = (value, withoutSymbol = false) => {
   const responseValue = value.toLocaleString("pt-br", {
     style: "currency",
     currency: "BRL",
   });
+
+  if (withoutSymbol) {
+    return responseValue?.replace("R$", "");
+  }
+
   return responseValue;
 };
 

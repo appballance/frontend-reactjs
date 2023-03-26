@@ -6,5 +6,16 @@ import { Select } from "./Select";
 import { GoBack } from "./GoBack";
 import { CustomTable as Table } from "./Table";
 import { Card } from "./Card";
+import { BalanceCard } from "./BalanceCard";
 
-export { Button, Input, Main, ModalConectBank, Select, GoBack, Table, Card };
+export {
+  Button,
+  Input,
+  Main,
+  ModalConectBank,
+  Select,
+  GoBack,
+  Table,
+  Card,
+  BalanceCard,
+};
