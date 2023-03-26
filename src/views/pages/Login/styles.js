@@ -155,8 +155,9 @@ export const DontRegister = styled.div`
   align-items: center;
   gap: 5px;
 
-  position: absolute;
-  bottom: 10px;
+  position: fixed;
+  bottom: 0;
+  padding: 10px;
 `;
 
 export const Register = styled.p`
