@@ -18,12 +18,12 @@ export const useBank = (bankId) => {
   const [perPage] = useState(10);
   const [isLoading, setLoading] = useState(true);
 
-  const history = useHistory();
+  const { push } = useHistory();
   const { showToastMessage } = useApp();
   const { getBank } = useBankService();
 
   const redirectToLogin = () => {
-    history.push("/login");
+    push("/");
   };
 
   useEffect(() => {
@@ -61,7 +61,7 @@ export const useBank = (bankId) => {
   }, [page]);
 
   const redirectHome = () => {
-    history.push("/balance");
+    push("/banks");
   };
 
   const headerContent = [

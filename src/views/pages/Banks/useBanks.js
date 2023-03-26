@@ -11,14 +11,13 @@ import expense from "views/assets/icons/expense.png";
 
 import * as S from "./styles";
 
-export const useHomeAuthenticated = () => {
+export const useBanks = () => {
   const [user, setUser] = useState({});
   const [userUpdated, setUserUpdate] = useState(false);
   const [isLoading, setLoading] = useState(true);
 
   const { showToastMessage } = useApp();
-
-  const history = useHistory();
+  const { push } = useHistory();
 
   useEffect(() => {
     if (!userUpdated) {
@@ -31,7 +30,7 @@ export const useHomeAuthenticated = () => {
         })
         .catch((error) => {
           if (error?.response?.data?.detail === "Signature has expired") {
-            history.push("/login");
+            push("/");
           }
           showToastMessage(error || "Erro na autenticação", "msgError");
           setLoading(false);

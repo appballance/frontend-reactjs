@@ -14,7 +14,7 @@ export const Register = () => {
 
   return (
     <S.RegisterContent>
-      <S.GoBack path="/login" title="Voltar" />
+      <S.GoBack path="/" title="Voltar" />
 
       <S.Form>
         <S.Title>Cadastro</S.Title>

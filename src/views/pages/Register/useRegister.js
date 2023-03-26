@@ -16,7 +16,7 @@ export const useRegister = () => {
     [registerSchema.password2.name]: "",
   });
 
-  const history = useHistory();
+  const { push } = useHistory();
 
   const onSubmit = async () => {
     setSubmitting(true);
@@ -29,7 +29,7 @@ export const useRegister = () => {
     }
 
     showToastMessage("Cadastro realizado com sucesso, realize o login");
-    history.push("/login");
+    push("/");
     return;
   };
 

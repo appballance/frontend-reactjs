@@ -50,7 +50,7 @@ export const useBalance = () => {
       onClick: (e) => {
         e.stopPropagation();
         logoutUser();
-        history.push("/login");
+        history.push("/");
         showToastMessage("Desconectado com sucesso");
       },
       icon: leftPlataform,

@@ -6,8 +6,7 @@ import { loginSchema } from "../loginSchema";
 
 export const useLogin = () => {
   const { showToastMessage } = useApp();
-
-  const history = useHistory();
+  const { push } = useHistory();
 
   const onSubmit = async (values, { setSubmitting }) => {
     setSubmitting(true);
@@ -20,7 +19,7 @@ export const useLogin = () => {
     }
 
     showToastMessage("Login realizado com sucesso");
-    history.push("/balance");
+    push("/banks");
     return;
   };
 

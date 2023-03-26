@@ -6,13 +6,12 @@ import { userMock } from "application/mocks";
 import { Table } from "../../components";
 import { Balance } from "../../components/modules";
 
-import { useHomeAuthenticated } from "./useHomeAuthenticated";
+import { useBanks } from "./useBanks";
 
 import * as S from "./styles";
 
-const HomeAuthenticated = () => {
-  const { user, isLoading, headerContent, rowsContent, bankTitle } =
-    useHomeAuthenticated();
+export const Banks = () => {
+  const { user, isLoading, headerContent, rowsContent, bankTitle } = useBanks();
 
   const history = useHistory();
 
@@ -50,5 +49,3 @@ const HomeAuthenticated = () => {
     </Balance>
   );
 };
-
-export { HomeAuthenticated };
