@@ -15,10 +15,8 @@ const Login = () => {
   return (
     <S.Body>
       <S.Left>
-        <S.GoBackDesktop path="/" title="Voltar" />
       </S.Left>
       <S.Right>
-        <S.GoBackMobile path="/" title="Voltar" isBlack />
 
         <Formik
           initialValues={{

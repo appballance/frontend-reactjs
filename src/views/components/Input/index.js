@@ -21,7 +21,7 @@ const Input = ({
       value={value}
       onChange={onChange}
       width={width}
-      label={label}
+      placeholder={label}
     />
   </S.InputContainer>
 );

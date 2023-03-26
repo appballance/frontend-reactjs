@@ -9,13 +9,13 @@ import goBackWhite from "../../assets/icons/go-back-white.png";
 export const GoBack = ({
   title = "",
   onClick = null,
-  isBlack = false,
+  isWhite = false,
   path = "/",
   ...restProps
 }) => {
   const history = useHistory();
 
-  const goBackImage = isBlack ? goBackBlack : goBackWhite;
+  const goBackImage = isWhite ? goBackWhite : goBackBlack;
 
   const onClickHistory = (e) => {
     history.push(path);
@@ -27,7 +27,7 @@ export const GoBack = ({
   return (
     <S.GoBackContent onClick={onClickFunction} {...restProps}>
       <S.GoBackImage src={goBackImage} alt="Voltar" />
-      <S.GoBackTitle isBlack={isBlack}>{title}</S.GoBackTitle>
+      <S.GoBackTitle isWhite={isWhite}>{title}</S.GoBackTitle>
     </S.GoBackContent>
   );
 };

@@ -47,7 +47,6 @@ export const useRegister = () => {
   });
 
   return {
-    data,
     onSubmit,
     registerSchema,
     getFieldDefaultProps,
