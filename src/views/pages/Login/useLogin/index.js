@@ -26,6 +26,6 @@ export const useLogin = () => {
 
   return {
     onSubmit,
-    loginSchema
+    loginSchema,
   };
 };

@@ -29,7 +29,7 @@ const theme = {
     biggest_max: "30px",
   },
   colors: {
-    purple_1: "#480355",
+    purple_1: "#9448BC",
     purple_2: "#5D036F",
     white_1: "#FFFFFF",
     black_1: "#000000",
