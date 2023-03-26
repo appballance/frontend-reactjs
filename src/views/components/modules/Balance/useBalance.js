@@ -1,17 +1,13 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
 
 import { useApp } from "application/context";
 import { removeMaskCpf } from "infrastructure/utils";
-import { logoutUser } from "infrastructure/services/user-service";
 import {
   authNubank,
   sendCodeByEmailNubank,
 } from "infrastructure/services/bank-service";
 
-import bankConectIcon from "views/assets/icons/connect-white.png";
 import bankList from "views/assets/icons/bank-white.png";
-import leftPlataform from "views/assets/icons/left-white.png";
 
 export const useBalance = () => {
   const [stateMain, setStateMain] = useState(false);
@@ -19,8 +15,6 @@ export const useBalance = () => {
   const [stateCode, setStateCode] = useState(false);
 
   const { showToastMessage } = useApp();
-
-  const history = useHistory();
 
   const initialValues = {
     cpf: "",
@@ -36,24 +30,6 @@ export const useBalance = () => {
         e.stopPropagation();
       },
       icon: bankList,
-    },
-    {
-      name: "Conectar novo banco",
-      onClick: (e) => {
-        e.stopPropagation();
-        setStateModal(!stateModal);
-      },
-      icon: bankConectIcon,
-    },
-    {
-      name: "Desconectar-se",
-      onClick: (e) => {
-        e.stopPropagation();
-        logoutUser();
-        history.push("/");
-        showToastMessage("Desconectado com sucesso");
-      },
-      icon: leftPlataform,
     },
   ];
 
