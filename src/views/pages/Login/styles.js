@@ -57,7 +57,7 @@ export const GoBackMobile = styled(GoBack)`
 export const GoBackDesktop = styled(GoBack)`
   display: flex;
 
-  @media (max-width: 800px) {
+  @media (max-width: ${({ theme: { media } }) => media.tablet_landscape}) {
     display: none;
   }
 `;
@@ -72,8 +72,9 @@ export const Right = styled.div`
   flex-direction: column;
   position: relative;
 
-  @media (max-width: 800px) {
+  @media (max-width: ${({ theme: { media } }) => media.tablet_landscape}) {
     width: 100%;
+    justify-content: start;
   }
 `;
 
@@ -99,6 +100,10 @@ export const LogoContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 80px;
+
+  @media (max-width: ${({ theme: { media } }) => media.tablet_landscape}) {
+    margin: 40px 0 80px 0;
+  }
 `;
 
 export const Logo = styled.img`
