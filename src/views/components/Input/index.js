@@ -7,16 +7,13 @@ const Input = ({
   name,
   type = "text",
   onChange,
-  placeholder = "Digite aqui...",
+  label = "",
   value,
-  label = "label",
   width = "100%",
-  bgColor = "#9448BC",
-  labelColor = "#480355",
   ...rest
 }) => (
   <S.InputContainer {...rest}>
-    <S.InputLabel htmlFor={id}>{label}</S.InputLabel>
+    {!!value?.length && <S.InputLabel htmlFor={id}>{label}</S.InputLabel>}
     <S.InputElement
       id={id}
       name={name}
@@ -24,9 +21,7 @@ const Input = ({
       value={value}
       onChange={onChange}
       width={width}
-      bgColor={bgColor}
-      labelColor={labelColor}
-      placeholder={placeholder}
+      placeholder={label}
     />
   </S.InputContainer>
 );

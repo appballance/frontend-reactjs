@@ -1,13 +1,14 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const MainContent = styled.div`
   width: ${({ state }) => (state ? "200px" : "70px")};
-  height: unset;
+  height: 100%;
   min-height: 100vh;
   background-color: ${({ theme: { colors } }) => colors.purple_1};
 
-  @media (max-width: ${({ theme: { media } }) => media.tablet_landscape}) {
-    width: ${({ state }) => (state ? "100%" : "70px")};
+  @media (max-width: ${({ theme: { media } }) => media.tablet_portrait}) {
+    width: ${({ state }) => (state ? "100%" : "0px")};
+    position: ${({ state }) => (state ? "fixed" : "relative")};
   }
 
   display: flex;
@@ -33,24 +34,64 @@ export const List = styled.ul`
 
 export const ListELement = styled.li`
   width: 100%;
-  color: ${({ theme: { colors } }) => colors.white_1};
   padding: 10px 0;
   display: flex;
   align-items: center;
-  justify-content: ${({ state }) => !state ? "center" : "flex-state"};
+  justify-content: center;
   cursor: pointer;
 
-  a {
-    padding-left: 15px;
-  }
+  ${({ state }) =>
+    state &&
+    css`
+      justify-content: flex-start;
+      padding-left: 20px;
+    `};
 
-  :hover {
-    background-color: ${({ theme: { colors }, state }) =>
-      state ? colors.purple_2 : colors.purple_1};
+  p {
+    padding-left: 15px;
+    color: ${({ theme: { colors } }) => colors.white_1};
   }
 `;
 
 export const Icon = styled.img`
   width: 20px;
   height: 20px;
+`;
+
+export const Copy = styled.div`
+  color: transparent;
+  white-space: nowrap;
+  padding: 10px;
+  opacity: 0.3;
+
+  ${({ state }) =>
+    state &&
+    css`
+      color: ${({ theme: { colors } }) => colors.white_1};
+    `};
+`;
+
+export const Footer = styled.footer`
+  position: absolute;
+  bottom: 0;
+  color: #fff;
+  font-size: 11px;
+
+  ${({ state }) =>
+    !state &&
+    css`
+      width: 70px;
+    `};
+`;
+
+export const MenuMobile = styled.img`
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  /* margin: 15px; */
+  display: none;
+
+  @media (max-width: ${({ theme: { media } }) => media.tablet_portrait}) {
+    display: block;
+  }
 `;

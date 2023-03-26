@@ -4,6 +4,7 @@ import { ThemeProvider } from "styled-components";
 import { ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
+import "views/styles/fonts.css";
 
 import Routes from "./routes";
 

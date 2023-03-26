@@ -50,8 +50,8 @@
     "react-native/no-unused-styles": "off",
     "react/no-multi-comp": "off",
     "react/jsx-no-bind": "off",
-    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
-    "react-hooks/exhaustive-deps": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": 0,
     "array-callback-return": "off",
     "no-restricted-globals": "off"
   }

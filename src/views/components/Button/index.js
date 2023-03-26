@@ -7,11 +7,11 @@ const Button = ({
   bgColor = "#9448BC",
   children = "Children",
   disable,
-  width = "100%",
   loading,
   typeLoading = "bubbles",
   color = "#9448BC",
-  type,
+  // variant,
+  size = "small",
   ...restProps
 }) => {
   const textButton = loading ? "" : children;
@@ -20,9 +20,9 @@ const Button = ({
       onClick={onClick}
       bgColor={bgColor}
       disabled={disable}
-      width={width}
       loading={`${loading}`}
-      type={type}
+      // variant={variant}
+      size={size}
       {...restProps}
     >
       {textButton}

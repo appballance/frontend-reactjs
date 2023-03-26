@@ -1,40 +1,20 @@
-import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useState } from "react";
 
 import { useApp } from "application/context";
-import { getUser, logoutUser } from "infrastructure/services/user-service";
+import { removeMaskCpf } from "infrastructure/utils";
 import {
   authNubank,
   sendCodeByEmailNubank,
 } from "infrastructure/services/bank-service";
 
-import bankConectIcon from "views/assets/icons/connect-white.png";
 import bankList from "views/assets/icons/bank-white.png";
-import leftPlataform from "views/assets/icons/left-white.png";
 
-export const useHomeAuthenticated = () => {
-  const [user, setUser] = useState({});
+export const useBalance = () => {
   const [stateMain, setStateMain] = useState(false);
   const [stateModal, setStateModal] = useState(false);
   const [stateCode, setStateCode] = useState(false);
-  const [userUpdated, setUserUpdate] = useState(false);
 
   const { showToastMessage } = useApp();
-
-  const history = useHistory();
-
-  useEffect(() => {
-    if (!userUpdated) {
-      getUser()
-        .then(setUser)
-        .catch((error) => {
-          console.log(error);
-          history.push("/login");
-          showToastMessage("Erro na autenticação", "msgError");
-        });
-      setUserUpdate(true);
-    }
-  }, [userUpdated]);
 
   const initialValues = {
     cpf: "",
@@ -51,27 +31,9 @@ export const useHomeAuthenticated = () => {
       },
       icon: bankList,
     },
-    {
-      name: "Conectar novo banco",
-      onClick: (e) => {
-        e.stopPropagation();
-        setStateModal(!stateModal);
-      },
-      icon: bankConectIcon,
-    },
-    {
-      name: "Desconectar-se",
-      onClick: (e) => {
-        e.stopPropagation();
-        logoutUser();
-        history.push("/login");
-        showToastMessage("Desconectado com sucesso");
-      },
-      icon: leftPlataform,
-    },
   ];
 
-  const onSubmit = async (values, { setSubmitting }) => {
+  const onSubmit = async (values, { setSubmitting, resetForm }) => {
     setSubmitting(true);
 
     if (stateCode) {
@@ -84,6 +46,7 @@ export const useHomeAuthenticated = () => {
       if (response?.success) {
         showToastMessage("Banco conectado com sucesso");
         setStateModal(false);
+        resetForm();
       } else {
         const errorMessage =
           response?.message || "Erro ao tentar conectar com Banco";
@@ -95,11 +58,12 @@ export const useHomeAuthenticated = () => {
     }
 
     const payload = {
-      cpf: values?.cpf,
+      cpf: removeMaskCpf(values?.cpf),
       password: values?.password,
       device_id: window.navigator.platform,
       code: values?.bank?.value,
     };
+
     const response = await sendCodeByEmailNubank(payload);
 
     if (response?.success) {
@@ -114,7 +78,6 @@ export const useHomeAuthenticated = () => {
   };
 
   return {
-    user,
     listMain,
     stateMain,
     setStateMain,

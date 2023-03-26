@@ -1,1 +1,2 @@
-export { banksMock, CODE_BANK } from "./banks";
+export { banksMock, bankMock } from "./banks";
+export { userMock } from "./users";
