@@ -1,7 +1,14 @@
 import { CODE_BANK } from "application/constant";
 
+import logoNubank from "views/assets/icons/logo-nubank.png";
+
 export const banksMock = [
-  { value: CODE_BANK.NUBANK, label: "NU PAGAMENTOS S.A" },
+  {
+    value: CODE_BANK.NUBANK,
+    label: "Nubank",
+    logoImage: logoNubank,
+    color: "rgba(157, 2, 217, 0.3)",
+  },
   {
     value: CODE_BANK.BRAZIL_BANK,
     label: "BANCO DO BRASIL S.A",

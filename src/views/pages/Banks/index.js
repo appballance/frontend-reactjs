@@ -1,51 +1,67 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-import { userMock } from "application/mocks";
-
-import { Table } from "../../components";
-import { Balance } from "../../components/modules";
+import { Balance } from "views/components/modules";
+import { ModalConectBank } from "views/components";
 
 import { useBanks } from "./useBanks";
+import { BankCard } from "./BankCard";
+
+import addBankImage from "views/assets/icons/add.png";
 
 import * as S from "./styles";
 
 export const Banks = () => {
-  const { user, isLoading, headerContent, rowsContent, bankTitle } = useBanks();
+  const {
+    user,
+    isUserWithoutBank,
+    isAvailableToConnect,
+    handleConnectBank,
+    connectBankModal,
+    onCloseModalConnect,
+  } = useBanks();
 
   const history = useHistory();
-
-  const rows = isLoading ? userMock?.banks : user?.banks;
 
   return (
     <Balance>
       <S.HomeContainer>
-        <S.TableContainer>
-          {rows?.map((bank, index) => {
-            const titleOnClick = () => {
+        <S.Title>
+          <S.TitleHello>Olá,</S.TitleHello>
+          <S.TitleSurname>{user?.surname}</S.TitleSurname>
+        </S.Title>
+
+        <S.BalanceCard value={user?.balance} />
+
+        <S.TableContainer
+          isEmpty={isUserWithoutBank}
+          isAvailableToConnect={isAvailableToConnect}
+          handleConnectBank={handleConnectBank}
+        >
+          {user?.banks?.map(({ code, balance, entity_id }, index) => {
+            const redirectToBank = () => {
               history.push("/bank", {
-                bankId: bank.entity_id,
+                bankId: entity_id,
               });
             };
 
-            const title = bankTitle(bank);
-            const header = headerContent();
-            const rows = rowsContent(bank);
-
             return (
-              <Table
+              <BankCard
                 key={index}
-                title={title}
-                titleOnClick={titleOnClick}
-                headerContent={header}
-                rowsContent={rows}
-                isLoading={isLoading}
-                rowSkeleton={3}
+                balance={balance}
+                code={code}
+                onClick={redirectToBank}
               />
             );
           })}
+          <S.CardAddBank onClick={() => handleConnectBank(true)}>
+            <S.CardAddBankImage src={addBankImage} />
+            <S.CardAddBankTitle>Novo banco</S.CardAddBankTitle>
+          </S.CardAddBank>
         </S.TableContainer>
       </S.HomeContainer>
+
+      {connectBankModal && <ModalConectBank onClose={onCloseModalConnect} />}
     </Balance>
   );
 };

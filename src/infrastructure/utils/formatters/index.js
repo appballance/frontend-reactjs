@@ -15,7 +15,7 @@ export const maskCpf = (value) => {
 };
 
 export const maskReal = (value, withoutSymbol = false) => {
-  const responseValue = value.toLocaleString("pt-br", {
+  const responseValue = value?.toLocaleString("pt-br", {
     style: "currency",
     currency: "BRL",
   });

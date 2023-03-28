@@ -7,12 +7,17 @@ import eyesNowiew from "views/assets/icons/eyes-noview.png";
 
 import * as S from "./styles";
 
-export const BalanceCard = ({ value, isView = true, onClick = () => {} }) => {
+export const BalanceCard = ({
+  value,
+  isView = true,
+  onClick = () => {},
+  ...reatProps
+}) => {
   const eyes = isView ? eyesView : eyesNowiew;
   const valueFormatted = isView ? maskReal(value, true) : "*****";
 
   return (
-    <S.Container>
+    <S.Container {...reatProps}>
       <S.Element isView={isView}>
         <S.Coin>R$</S.Coin>
         <S.Value>{valueFormatted}</S.Value>

@@ -10,23 +10,12 @@ import { useModalConectBank } from "./useModalConectBank";
 
 import * as S from "./styles";
 
-export const ModalConectBank = ({
-  onSubmit,
-  state,
-  setState,
-  stateCode,
-  ...restProps
-}) => {
-  const { getCurrentBankStyle, initialValues } = useModalConectBank();
+export const ModalConectBank = ({ onClose, ...restProps }) => {
+  const { getCurrentBankStyle, initialValues, onSubmit, stateCode } =
+    useModalConectBank({ onClose });
 
   return (
-    <S.Container
-      onClick={(e) => {
-        e.stopPropagation();
-        setState(false);
-      }}
-      {...restProps}
-    >
+    <S.Container onClick={onClose} {...restProps}>
       <S.Modal onClick={(e) => e.stopPropagation()}>
         <Formik
           // validationSchema={validationSchema} // de acordo com o banco selecionado
@@ -56,14 +45,18 @@ export const ModalConectBank = ({
               )}
 
               <Input
-                hide={getCurrentBankStyle(values?.bank?.value)?.hide || stateCode}
+                hide={
+                  getCurrentBankStyle(values?.bank?.value)?.hide || stateCode
+                }
                 name="cpf"
                 label="CPF - Cadastrado no Banco"
                 value={values["cpf"]}
                 onChange={(e) => setFieldValue("cpf", maskCpf(e.target.value))}
               />
               <Input
-                hide={getCurrentBankStyle(values?.bank?.value)?.hide || stateCode}
+                hide={
+                  getCurrentBankStyle(values?.bank?.value)?.hide || stateCode
+                }
                 name="password"
                 label="Senha - Cadastrada no Banco"
                 type="password"

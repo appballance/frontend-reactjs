@@ -12,4 +12,8 @@ export const Card = styled.div`
   font-size: 32px;
   line-height: 46px;
   color: ${({ fontColor, theme: { colors } }) => fontColor || colors.white_1};
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 `;
