@@ -32,6 +32,7 @@ export const Logo = styled.img`
 
 export const ValueContainer = styled.div`
   display: flex;
+  gap: ${({ isView }) => (isView ? "0px" : "5px")};
 `;
 
 export const ValueSymbol = styled.p`

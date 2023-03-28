@@ -10,15 +10,20 @@ import { BankCard } from "./BankCard";
 import addBankImage from "views/assets/icons/add.png";
 
 import * as S from "./styles";
+import { Skeleton } from "@mui/material";
 
 export const Banks = () => {
   const {
     user,
     isUserWithoutBank,
     isAvailableToConnect,
+    isAvailableToAddBank,
     handleConnectBank,
+    handleViewBalance,
     connectBankModal,
     onCloseModalConnect,
+    isLoading,
+    isViewBalance,
   } = useBanks();
 
   const history = useHistory();
@@ -28,10 +33,21 @@ export const Banks = () => {
       <S.HomeContainer>
         <S.Title>
           <S.TitleHello>Olá,</S.TitleHello>
-          <S.TitleSurname>{user?.surname}</S.TitleSurname>
+          <S.TitleSurname>
+            {isLoading ? (
+              <Skeleton variant="text" width={150} height={40} />
+            ) : (
+              user?.surname
+            )}
+          </S.TitleSurname>
         </S.Title>
 
-        <S.BalanceCard value={user?.balance} />
+        <S.BalanceCard
+          value={user?.balance}
+          isLoading={isLoading}
+          onClick={handleViewBalance}
+          isView={isViewBalance}
+        />
 
         <S.TableContainer
           isEmpty={isUserWithoutBank}
@@ -51,13 +67,16 @@ export const Banks = () => {
                 balance={balance}
                 code={code}
                 onClick={redirectToBank}
+                isView={isViewBalance}
               />
             );
           })}
-          <S.CardAddBank onClick={() => handleConnectBank(true)}>
-            <S.CardAddBankImage src={addBankImage} />
-            <S.CardAddBankTitle>Novo banco</S.CardAddBankTitle>
-          </S.CardAddBank>
+          {isAvailableToAddBank && (
+            <S.CardAddBank onClick={() => handleConnectBank(true)}>
+              <S.CardAddBankImage src={addBankImage} />
+              <S.CardAddBankTitle>Novo banco</S.CardAddBankTitle>
+            </S.CardAddBank>
+          )}
         </S.TableContainer>
       </S.HomeContainer>
 

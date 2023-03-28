@@ -9,6 +9,7 @@ export const useBanks = () => {
   const [userUpdated, setUserUpdate] = useState(false);
   const [isLoading, setLoading] = useState(true);
   const [connectBankModal, setConnectBankModal] = useState(false);
+  const [isViewBalance, setViewBalance] = useState(true);
 
   const { showToastMessage } = useApp();
   const { push } = useHistory();
@@ -36,12 +37,19 @@ export const useBanks = () => {
 
   const isUserWithoutBank = !user?.banks?.length && !isLoading;
 
+  const isAvailableToAddBank = !isLoading;
   const isAvailableToConnect = isUserWithoutBank;
 
   const handleConnectBank = (ignoreAvailable = false) => {
     if (!isAvailableToConnect && !ignoreAvailable) return;
 
     setConnectBankModal(true);
+  };
+
+  const handleViewBalance = () => {
+    if (isLoading) return;
+
+    setViewBalance(!isViewBalance);
   };
 
   const onCloseModalConnect = () => {
@@ -54,8 +62,12 @@ export const useBanks = () => {
     user,
     isUserWithoutBank,
     isAvailableToConnect,
+    isAvailableToAddBank,
     handleConnectBank,
+    handleViewBalance,
     connectBankModal,
     onCloseModalConnect,
+    isLoading,
+    isViewBalance,
   };
 };

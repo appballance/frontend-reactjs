@@ -17,8 +17,8 @@ export const Element = styled.p`
   display: flex;
   align-items: flex-start;
 
-  ${({ isView }) =>
-    !isView &&
+  ${({ isView, isLoading }) =>
+    (!isView || isLoading) &&
     css`
       gap: 10px;
     `};
@@ -39,9 +39,28 @@ export const Value = styled.p`
   font-size: 32px;
   line-height: 30px;
   color: ${({ theme: { colors } }) => colors.white_1};
+
+  ${({ isLoading }) =>
+    isLoading &&
+    css`
+      position: relative;
+
+      span {
+        position: absolute;
+        top: -5px;
+        left: 0;
+      }
+    `}
 `;
 
 export const Eyes = styled.img`
   width: 26px;
   height: 26px;
+  cursor: pointer;
+
+  ${({ isLoading }) =>
+    isLoading &&
+    css`
+      cursor: not-allowed;
+    `}
 `;

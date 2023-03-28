@@ -5,9 +5,9 @@ import { banksMock } from "application/mocks";
 
 import * as S from "./styles";
 
-export const BankCard = ({ balance, code, onClick = null }) => {
+export const BankCard = ({ isView = true, balance, code, onClick = null }) => {
   const bank = banksMock?.find((bank) => bank.value === code);
-  const balanceFormatted = maskReal(balance, true);
+  const balanceFormatted = isView ? maskReal(balance, true) : "*****";
 
   const hasClickFunction = typeof onClick === "function";
 
@@ -22,7 +22,7 @@ export const BankCard = ({ balance, code, onClick = null }) => {
       }}
     >
       <S.Logo src={bank?.logoImage} />
-      <S.ValueContainer>
+      <S.ValueContainer isView={isView}>
         <S.ValueSymbol>R$</S.ValueSymbol>
         <S.Value>{balanceFormatted}</S.Value>
       </S.ValueContainer>
