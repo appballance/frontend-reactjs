@@ -1,6 +1,6 @@
 import { Button } from "./Button";
 import { Input } from "./Input";
-import { Main } from "./Main";
+import { SideBar } from "./SideBar";
 import { ModalConectBank } from "./ModalConectBank";
 import { Select } from "./Select";
 import { GoBack } from "./GoBack";
@@ -11,7 +11,7 @@ import { BalanceCard } from "./BalanceCard";
 export {
   Button,
   Input,
-  Main,
+  SideBar,
   ModalConectBank,
   Select,
   GoBack,

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Main, ModalConectBank } from "../../../components";
+import { SideBar, ModalConectBank } from "../../../components";
 
 import { useBalance } from "./useBalance";
 
@@ -20,7 +20,7 @@ const Balance = ({ children }) => {
   return (
     <S.HomeContainer>
       <S.Left>
-        <Main
+        <SideBar
           listContent={listMain}
           state={stateMain}
           setState={setStateMain}
